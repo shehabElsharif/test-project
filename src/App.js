@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import './index.css';
 
 function App() {
+  const [colorName, setcolorName] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='colorBox'
+      style={{backgroundColor: colorName}}>
+      </div>
+      <form action="submit" onSubmit={(e) =>{handleSubmit(e)}}>
+
+          <label htmlFor="input">input</label>
+          
+          <input
+                autoFocus
+                id='colorName'
+                type='text'
+                placeholder='write a color of choice'
+                required
+                value={colorName}
+                onChange={(e) => setcolorName(e.target.value)}
+            />
+      </form>
     </div>
   );
 }
