@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './index.css';
+import ColorBox from './ColorBox.js';
+import ColorInput from './ColorInput';
 
 function App() {
   const [colorName, setcolorName] = useState('');
@@ -7,28 +9,15 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
   }
-
-
-
   return (
     <div className="App">
-      <div className='colorBox'
-      style={{backgroundColor: colorName}}>
-      </div>
-      <form action="submit" onSubmit={(e) =>{handleSubmit(e)}}>
-
-          <label htmlFor="input">input</label>
-          
-          <input
-                autoFocus
-                id='colorName'
-                type='text'
-                placeholder='write a color of choice'
-                required
-                value={colorName}
-                onChange={(e) => setcolorName(e.target.value)}
-            />
-      </form>
+      <ColorBox 
+      colorName={colorName}
+      />
+      <ColorInput
+      handleSubmit={handleSubmit}
+      colorName={colorName}
+      setcolorName={setcolorName} />
     </div>
   );
 }
